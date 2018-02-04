@@ -1,6 +1,6 @@
 <template>
   <div>
-  <el-button v-if="canAddNewTalks" @click="newTalk()">Add a talk</el-button>
+  <el-button v-if="canAddNewMeetups" @click="newTalk()">Add a talk</el-button>
 
   <div v-for="(t, index) in talks" :key="index">
     <talk v-if="editedIndex!==index" :talk="t" @edit="edit(index)"></talk>
@@ -29,7 +29,7 @@ export default {
     }
   },
   computed: {
-    canAddNewTalks () {
+    canAddNewMeetups () {
       return this.editedIndex === -1
     }
   },
