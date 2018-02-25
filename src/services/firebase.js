@@ -10,10 +10,11 @@ const config = {
   messagingSenderId: '858429515474'
 }
 
-firebase.initializeApp(config)
+const app = firebase.initializeApp(config)
+const db = app.database()
 
 export default {
-  // TODO: Find a way to not reuire passing a
+  // Move to a router guard
   checkUserAuth ($router, callback = () => {}) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -41,5 +42,5 @@ export default {
     const ui = new firebaseui.auth.AuthUI(firebase.auth())
     ui.start(selector, uiConfig)
   },
-  firebase
+  db
 }

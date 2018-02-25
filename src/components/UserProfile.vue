@@ -35,11 +35,11 @@ export default {
         }
       },
       userInfo: {
-        displayName: 'John Smith',
+        displayName: 'Задай вопрос Эвану Ю',
         firstName: 'John',
         lastName: 'Smith',
-        twitterHandle: 'johnSmith',
-        url: 'http://johnsmith.com',
+        twitterHandle: '',
+        url: '',
         bio: 'John\nis\nSMith'
       }
     }

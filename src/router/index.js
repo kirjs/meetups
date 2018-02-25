@@ -28,7 +28,14 @@ export default new Router({
     },
     {
       path: '/meetups',
-      name: 'Meetups',
+      component: MeetupsWrapper,
+      children: [
+        { path: '', component: Meetups },
+        { path: ':id', component: MeetupPage }
+      ]
+    },
+    {
+      path: '/users',
       component: MeetupsWrapper,
       children: [
         { path: '', component: Meetups },
