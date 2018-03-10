@@ -1,4 +1,5 @@
 import FieldDisplayDefault from '@/components/entity-framework/display/fields/FieldDisplayDefault'
+import FieldDisplayLink from '@/components/entity-framework/display/fields/FieldDisplayLink'
 import FieldDisplayPicture from '@/components/entity-framework/display/fields/FieldDisplayPicture'
 import FieldDisplayMeta from '@/components/entity-framework/display/fields/FieldDisplayMeta'
 import FieldDisplayTextarea from '@/components/entity-framework/display/fields/FieldDisplayTextarea'
@@ -8,6 +9,7 @@ import FieldDisplayEntity from '@/components/entity-framework/display/fields/Fie
 
 export default {
   'field-display-default': FieldDisplayDefault,
+  'field-display-link': FieldDisplayLink,
   'field-display-picture': FieldDisplayPicture,
   'field-display-meta': FieldDisplayMeta,
   'field-display-textArea': FieldDisplayTextarea,

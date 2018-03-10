@@ -27,9 +27,16 @@ export default {
   computed: {},
   created () {
     this.ref.list(value => this.model = value)
+
+
+
   },
   data () {
-
+    this.schema.fields.filter(field => field.type === 'link').forEach(field => {
+      this.service.ref(field.collection).list((items) => {
+        field.context = items;
+      })
+    })
     return {
       ref: this.service.ref(this.collection),
       model: []

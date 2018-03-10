@@ -11,28 +11,37 @@ export default {
       inputType: 'text',
       label: 'description',
       model: 'description'
-    },/*
+    },
     {
-      type: 'input',
-      collection: 'event',
+      type: 'link',
+      collection: 'events',
+      displayKey: 'title',
       label: 'event',
-      model: 'event'
-    } ,
-      {
-        type: 'select',
-        label: 'event',
-        model: 'event',
-        routerLink: 'event/',
-        values: [],
-        context: []
-      },
-      {
-        type: 'select',
-        label: 'speaker',
-        model: 'speaker',
-        routerLink: 'users/',
-        values: [],
-        context: []
-      }*/
+      model: 'event',
+    },
+    {
+      type: 'link',
+      collection: 'userInfo',
+      displayKey: 'displayName',
+      label: 'speaker',
+      model: 'speaker',
+    },
+    /*
+    {
+      type: 'select',
+      label: 'event',
+      model: 'event',
+      routerLink: 'event/',
+      values: [],
+      context: []
+    },
+    {
+      type: 'select',
+      label: 'speaker',
+      model: 'speaker',
+      routerLink: 'users/',
+      values: [],
+      context: []
+    } */
   ]
 }
