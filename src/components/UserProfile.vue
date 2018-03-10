@@ -1,6 +1,5 @@
 <template>
     <div class="wrapper">
-      <avatar />
       <user-info v-if="!editMode" :info="userInfo" @edit="toggleEdit()"></user-info>
       <user-info-form v-if="editMode" :info="userInfo" @cancel="toggleEdit()" @update="toggleEdit()"></user-info-form>
       <div>
@@ -11,10 +10,8 @@
 </template>
 
 <script>
-import Avatar from '@/components/Avatar'
 import UserInfo from '@/components/UserInfo'
 import UserInfoForm from '@/components/UserInfoForm'
-import SpeakerCard from '@/components/SpeakerCard'
 
 export default {
   name: 'UserProfile',
@@ -24,12 +21,12 @@ export default {
       editMode: false,
       configs: {
         big: {
-          color: '#43b884',
+          color: '#e61e25',
           width: 600,
           height: 300
         },
         small: {
-          color: '#43b884',
+          color: '#e61e25',
           width: 300,
           height: 150
         }
@@ -50,10 +47,8 @@ export default {
     }
   },
   components: {
-    'avatar': Avatar,
     'user-info': UserInfo,
-    'user-info-form': UserInfoForm,
-    'speaker-card': SpeakerCard
+    'user-info-form': UserInfoForm
   }
 }
 </script>

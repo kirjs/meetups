@@ -3,9 +3,25 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
 import Start from '@/components/Start'
-import Meetups from '@/components/meetups/Meetups'
-import MeetupsWrapper from '@/components/meetups/MeetupsWrapper'
-import MeetupPage from '@/components/meetups/MeetupPage'
+import Users from '@/components/entities/Users'
+import Talks from '@/components/entities/Talks'
+import Meetups from '@/components/entities/Meetups'
+import Events from '@/components/entities/Events'
+import EventCards from '@/components/entities/EventCards'
+
+import FieldGroup from '@/components/entity-framework/FieldGroup'
+import FieldEntity from '@/components/entity-framework/FieldEntity'
+import FieldDate from '@/components/entity-framework/fields/FieldDate'
+import FieldColor from '@/components/entity-framework/fields/FieldColor'
+import FieldPicture from '@/components/entity-framework/fields/FieldPicture'
+import FieldMeta from '@/components/entity-framework/fields/FieldMeta'
+
+Vue.component('fieldGroup', FieldGroup)
+Vue.component('fieldEntity', FieldEntity)
+Vue.component('fieldMeta', FieldMeta)
+Vue.component('fieldPicture', FieldPicture)
+Vue.component('fieldColor', FieldColor)
+Vue.component('fieldDate', FieldDate)
 
 Vue.use(Router)
 
@@ -28,19 +44,35 @@ export default new Router({
     },
     {
       path: '/meetups',
-      component: MeetupsWrapper,
-      children: [
-        { path: '', component: Meetups },
-        { path: ':id', component: MeetupPage }
-      ]
+      component: Meetups
     },
     {
       path: '/users',
-      component: MeetupsWrapper,
+      component: Users,
       children: [
-        { path: '', component: Meetups },
-        { path: ':id', component: MeetupPage }
+        {
+          path: ':id',
+          component: Users
+        }
       ]
+    },
+    {
+      path: '/talks',
+      component: Talks,
+      children: [
+        {
+          path: ':id',
+          component: Users
+        }
+      ]
+    },
+    {
+      path: '/events',
+      component: Events
+    },
+    {
+      path: 'talkcard/:id',
+      component: EventCards
     }
   ]
 })

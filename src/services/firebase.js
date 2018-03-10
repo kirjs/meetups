@@ -28,8 +28,9 @@ export default {
     const ref = firebase.storage().ref().child('images/' + uid)
     ref.putString(avatar, 'data_url').then(callback, (e) => { debugger })
   },
-  getAvatar (uid, callback) {
-    firebase.storage().ref().child('images/' + uid).getDownloadURL().then(callback)
+  getAvatar (uid) {
+    let reference = firebase.storage().ref().child('images/' + uid)
+    return reference.getDownloadURL()
   },
   displayFirebaseAuth (selector) {
     const uiConfig = {
