@@ -4,9 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
 import Start from '@/components/Start'
 import Users from '@/components/entities/Users'
-import Talks from '@/components/entities/Talks'
 import Meetups from '@/components/entities/Meetups'
-import Events from '@/components/entities/Events'
 import EventCards from '@/components/entities/EventCards'
 
 import FieldGroup from '@/components/entity-framework/FieldGroup'
@@ -17,7 +15,8 @@ import FieldColor from '@/components/entity-framework/fields/FieldColor'
 import FieldPicture from '@/components/entity-framework/fields/FieldPicture'
 import FieldMeta from '@/components/entity-framework/fields/FieldMeta'
 import entityRouterConfig from '../components/entity-framework/entityRouterConfig'
-import talksSchema from '../components/entities/talks-entity'
+import talksEntity from '../components/entities/talks-entity'
+import eventsEntity from '../components/entities/events-entity'
 import FirebaseEntityService from '../components/entity-framework/firebase-entity-service'
 
 Vue.component('fieldGroup', FieldGroup)
@@ -33,12 +32,10 @@ Vue.use(Router)
 export default new Router({
   routes: [
     ...entityRouterConfig({
-      routes: [{
-        path: '/talks',
-        name: 'Talks',
-        schema: talksSchema,
-        collection: 'talks'
-      }],
+      routes: [
+        talksEntity,
+        eventsEntity
+      ],
       service: new FirebaseEntityService()
     }),
     {
@@ -69,20 +66,6 @@ export default new Router({
           component: Users
         }
       ]
-    },
-    {
-      path: '/talks',
-      component: Talks,
-      children: [
-        {
-          path: ':id',
-          component: Users
-        }
-      ]
-    },
-    {
-      path: '/events',
-      component: Events
     },
     {
       path: 'talkcard/:id',
