@@ -1,7 +1,7 @@
 <template>
   <span>
     <span v-if="!field.url">{{value}}</span>
-    <router-link :to="'/users/'+model.key" v-if="field.url">{{value}}</router-link>
+    <router-link :to="'/'+field.url+'/'+model.key" v-if="field.url">{{value}}</router-link>
   </span>
 </template>
 

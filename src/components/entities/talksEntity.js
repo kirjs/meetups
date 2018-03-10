@@ -1,4 +1,5 @@
 export default {
+  id: 'talks',
   path: '/talks',
   name: 'Talks',
   collection: 'talks',
@@ -8,7 +9,8 @@ export default {
         type: 'input',
         inputType: 'text',
         label: 'title',
-        model: 'title'
+        model: 'displayName',
+        url: 'talks'
       },
       {
         type: 'textArea',
@@ -18,14 +20,14 @@ export default {
       },
       {
         type: 'link',
-        collection: 'events',
+        entityId: 'events',
         displayKey: 'title',
         label: 'event',
         model: 'event'
       },
       {
         type: 'link',
-        collection: 'userInfo',
+        entityId: 'users',
         displayKey: 'displayName',
         label: 'speaker',
         model: 'speaker'

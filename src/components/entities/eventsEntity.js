@@ -1,9 +1,16 @@
 export default {
+  id: 'events',
   path: '/events',
   name: 'Events',
   collection: 'events',
   schema: {
     fields: [
+      {
+        type: 'key',
+        label: 'key',
+        path: 'events',
+        model: 'key'
+      },
       {
         type: 'input',
         inputType: 'text',
@@ -18,7 +25,7 @@ export default {
       },
       {
         type: 'link',
-        collection: 'meetups',
+        entityId: 'meetups',
         displayKey: 'name',
         label: 'meetup',
         model: 'meetup'

@@ -1,6 +1,5 @@
 <template>
   <span>
-    <span v-if="!this.field.entity.path">{{actualValue}}</span>
     <router-link :to="this.field.entity.path + '/' + value" v-if="this.field.entity.path">{{actualValue}}</router-link>
   </span>
 </template>
@@ -14,7 +13,8 @@ export default {
       return this.field.displayKey || 'name'
     },
     selectedContext () {
-      return (this.field.context || []).find(a => a.key === this.value) || {[this.displayKey]: 'No Value'}
+      debugger;
+      return (this.field.context || []).filter(a => a.key === this.value) || {[this.displayKey]: 'No Value'}
     },
     actualValue () {
       return this.selectedContext[this.displayKey]

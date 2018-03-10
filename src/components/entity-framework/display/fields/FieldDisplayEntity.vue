@@ -1,11 +1,23 @@
 <template>
-  <component :is="field.component" :parentKey="field.parentField" :parentValue="value">
-  </component>
+  <div>
+    <generic-entity-list :schema="this.field.entity.schema" :collection="this.field.entity.collection" :filter="filter"
+                         :service="this.field.service"></generic-entity-list>
+
+  </div>
 </template>
 <script>
+
 export default {
   name: 'FieldDisplayEntity',
-  props: ['field', 'value', 'schema']
+  data () {
+    return {
+
+      filter: {
+        [this.field.key]: this.model.key
+      }
+    }
+  },
+  props: ['field', 'value', 'schema', 'model']
 }
 </script>
 

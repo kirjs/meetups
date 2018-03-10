@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <generic-entity-list :schema="schema" :collection="collection" :parentKey="parentKey"
-                          :parentValue="parentValue" :service="service"></generic-entity-list>
-  </div>
+    <generic-entity-list :schema="schema" :collection="collection" :filter="filter"
+                         :service="service"></generic-entity-list>
 </template>
 
 <script>
@@ -10,15 +8,7 @@ import GenericEntityList from '@/components/entity-framework/GenericEntityList'
 
 export default {
   name: 'EntityRouteHandler',
-  props: ['schema', 'id', 'config', 'collection', 'service'],
-  computed: {
-    parentKey () {
-      return this.id ? 'id' : ''
-    },
-    parentValue () {
-      return this.id || ''
-    }
-  },
+  props: ['schema', 'filter', 'config', 'collection', 'service'],
   components: {
     'generic-entity-list': GenericEntityList
   }

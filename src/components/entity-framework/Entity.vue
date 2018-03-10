@@ -1,5 +1,9 @@
 <template>
-  <el-card class='class'>
+  <el-card style="margin-top:10px">
+    <div slot="header">
+      <span>{{model.displayName}}</span>
+      <button @click='editMode = !editMode'  style="float: right; "><i class="el-icon-edit"></i></button>
+    </div>
     <div v-if='editMode'>
       <vue-form-generator :schema='schema' :model='model'>
       </vue-form-generator>
@@ -9,7 +13,6 @@
       <div v-for='field in schema.fields' :key='field.model'>
         <display-field :field="field" :model="model" :schema="schema"></display-field>
       </div>
-      <button @click='editMode = !editMode'>edit</button>
     </div>
   </el-card>
 </template>

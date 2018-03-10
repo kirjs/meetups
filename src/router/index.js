@@ -1,11 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/Login'
-import Start from '@/components/Start'
-import Users from '@/components/entities/Users'
-import Meetups from '@/components/entities/Meetups'
-import EventCards from '@/components/entities/EventCards'
 
 import FieldGroup from '@/components/entity-framework/FieldGroup'
 import FieldEntity from '@/components/entity-framework/FieldEntity'
@@ -15,9 +10,12 @@ import FieldColor from '@/components/entity-framework/fields/FieldColor'
 import FieldPicture from '@/components/entity-framework/fields/FieldPicture'
 import FieldMeta from '@/components/entity-framework/fields/FieldMeta'
 import entityRouterConfig from '../components/entity-framework/entityRouterConfig'
-import talksEntity from '../components/entities/talks-entity'
-import eventsEntity from '../components/entities/events-entity'
+import talksEntity from '../components/entities/talksEntity'
+import usersEntity from '../components/entities/usersEntity'
+import GenericEntityList from '@/components/entity-framework/GenericEntityList'
+import meetupsEntity from '../components/entities/meetupsEntity'
 import FirebaseEntityService from '../components/entity-framework/firebase-entity-service'
+import eventsEntity from '../components/entities/eventsEntity'
 
 Vue.component('fieldGroup', FieldGroup)
 Vue.component('fieldEntity', FieldEntity)
@@ -26,50 +24,25 @@ Vue.component('fieldPicture', FieldPicture)
 Vue.component('fieldColor', FieldColor)
 Vue.component('FieldLink', FieldLink)
 Vue.component('fieldDate', FieldDate)
-
 Vue.use(Router)
+
+Vue.component('generic-entity-list', GenericEntityList)
 
 export default new Router({
   routes: [
     ...entityRouterConfig({
-      routes: [
+      entities: [
+        usersEntity,
         talksEntity,
+        meetupsEntity,
         eventsEntity
       ],
       service: new FirebaseEntityService()
     }),
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/start',
-      name: 'Start',
-      component: Start
-    },
-    {
       path: '/login',
       name: 'Login',
       component: Login
-    },
-    {
-      path: '/meetups',
-      component: Meetups
-    },
-    {
-      path: '/users',
-      component: Users,
-      children: [
-        {
-          path: ':id',
-          component: Users
-        }
-      ]
-    },
-    {
-      path: 'talkcard/:id',
-      component: EventCards
     }
   ]
 })
