@@ -61,8 +61,8 @@ export default {
       configs: {
         big: {
           color: '#e61e25',
-          width: 200,
-          height: 100
+          width: 800,
+          height: 400
         },
         small: {
           color: '#e61e25',

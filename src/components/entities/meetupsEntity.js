@@ -6,12 +6,6 @@ export default {
   schema: {
     fields: [
       {
-        type: 'key',
-        label: 'key',
-        path: 'meetups',
-        model: 'key'
-      },
-      {
         type: 'input',
         inputType: 'text',
         label: 'name',

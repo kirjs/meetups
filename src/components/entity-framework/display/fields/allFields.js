@@ -12,6 +12,7 @@ import FieldDisplayKey from '@/components/entity-framework/display/fields/FieldD
 export default {
   'field-display-default': FieldDisplayDefault,
   'field-display-link': FieldDisplayLink,
+
   'field-display-linkBelongsTo': FieldDisplayLinkBelongsTo,
   'field-display-picture': FieldDisplayPicture,
   'field-display-meta': FieldDisplayMeta,

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-select v-model="value" filterable placeholder="Select">
+    <el-select v-model="value" :multiple="this.schema.multiple" filterable placeholder="Select">
       <el-option
         v-for="item in schema.context"
         :key="item.key"
@@ -18,7 +18,6 @@ import { abstractField } from 'vue-form-generator'
 export default {
   mixins: [abstractField],
   created(){
-
   }
 }
 </script>

@@ -1,3 +1,4 @@
+import SpeakerCardWrapper from '@/components/helpers/SpeakerCardWrapper'
 export default {
   id: 'talks',
   path: '/talks',
@@ -31,6 +32,13 @@ export default {
         displayKey: 'displayName',
         label: 'speaker',
         model: 'speaker'
+      },
+      {
+        type: 'meta',
+        entityId: 'users',
+        displayKey: 'displayName',
+        label: 'speaker card',
+        component: SpeakerCardWrapper
       }
     ]
   }

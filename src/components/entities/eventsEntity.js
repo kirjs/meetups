@@ -6,12 +6,6 @@ export default {
   schema: {
     fields: [
       {
-        type: 'key',
-        label: 'key',
-        path: 'events',
-        model: 'key'
-      },
-      {
         type: 'input',
         inputType: 'text',
         label: 'title',
@@ -34,7 +28,15 @@ export default {
         type: 'date',
         model: 'date',
         label: 'date'
-      }
+      },
+      {
+        type: 'link',
+        multiple: true,
+        entityId: 'users',
+        displayKey: 'displayName',
+        label: 'organizers',
+        model: 'organizers'
+      },
     ]
   }
 }

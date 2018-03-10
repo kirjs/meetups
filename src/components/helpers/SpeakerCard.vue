@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{image}}
     <svg version="1.1" ref="svg" :width="config.width" :height="config.height" text-rendering="optimizeLegibility"
          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
