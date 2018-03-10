@@ -15,6 +15,9 @@ import FieldDate from '@/components/entity-framework/fields/FieldDate'
 import FieldColor from '@/components/entity-framework/fields/FieldColor'
 import FieldPicture from '@/components/entity-framework/fields/FieldPicture'
 import FieldMeta from '@/components/entity-framework/fields/FieldMeta'
+import entityRouterConfig from '../components/entity-framework/entityRouterConfig'
+import talksSchema from '../components/entities/talks-entity'
+import FirebaseEntityService from '../components/entity-framework/firebase-entity-service'
 
 Vue.component('fieldGroup', FieldGroup)
 Vue.component('fieldEntity', FieldEntity)
@@ -27,6 +30,15 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    ...entityRouterConfig({
+      routes: [{
+        path: '/talks',
+        name: 'Talks',
+        schema: talksSchema,
+        collection: 'talks'
+      }],
+      service: new FirebaseEntityService()
+    }),
     {
       path: '/',
       name: 'HelloWorld',
