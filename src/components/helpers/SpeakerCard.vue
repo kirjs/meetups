@@ -1,10 +1,10 @@
 <template>
   <div>
     <svg version="1.1" ref="svg" :width="config.width" :height="config.height" text-rendering="optimizeLegibility"
-         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+         xmlns="http://www.w3.org/2000/svg">
       <defs>
         <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" :height="radius * 2" :width="radius * 2">
-          <image :width="radius * 2"  y="0" crossorigin="anonymous" :xlink:href="image"></image>
+          <image :width="radius * 2" y="0" crossorigin="anonymous" :xlink:href="image"></image>
         </pattern>
       </defs>
       <rect x="0" y="0" :width="config.width" :height="config.height" fill="white"></rect>
@@ -14,20 +14,28 @@
       <text style="font-family: 'Avenir', Helvetica, Arial, sans-serif;font-weight: 300;" :x="textStartX"
             :y="panelHeight + 1" stroke="white" fill="white" :font-size="panelHeight * 0.8">{{userInfo.displayName}}
       </text>
-      <foreignObject :x="textStartX" :y="textStartY" :width="textWidth" height="200" style="overflow: hidden">
+      <foreignObject :x="textStartX" :y="textStartY" :width="textWidth" :height="config.height"
+                     style="overflow: hidden">
         <div
           :style="titleStyle"
-          xmlns="http://www.w3.org/1999/xhtml" class="title">{{talk.title}}
+          xmlns="http://www.w3.org/1999/xhtml" class="title">{{talk.displayName}}
         </div>
         <div
           :style="descriptionStyle"
           xmlns="http://www.w3.org/1999/xhtml" class="description">{{talk.description}}
         </div>
       </foreignObject>
-      <rect :x="radius - panelHeight / 2" :y="radius * 2 + padding" :width="panelHeight" :height="padding / 2.5" :fill="config.color"></rect>
-      <text :y="metaStartY" :style="metaStyle" :x="radius" text-anchor="middle">{{userInfo.twitterHandle || userInfo.url || ''}}</text>
-      <text :y="metaStartY" :style="metaStyle" :x="textStartX">{{event.date}}</text>
-      <text :y="metaStartY" :style="metaStyle" :x="config.width - padding * 2" text-anchor="end">{{meetup.title}}</text>
+      <rect :x="radius - panelHeight / 2" :y="radius * 2 + padding" :width="panelHeight" :height="padding / 2.5"
+            :fill="config.color"></rect>
+      <text :y="metaStartY" :style="metaStyle" :x="radius" text-anchor="middle">
+        {{userInfo.twitterHandle || userInfo.url || ''}}
+      </text>
+
+      <text :y="metaStartY" :style="metaStyle" :x="config.width - padding * 3.5" text-anchor="end">
+        {{meetup.date}} @ {{meetup.name}}
+      </text>
+      <image :y="metaStartY - padding" :width="this.padding" crossorigin="anonymous"
+             :xlink:href="meetupLogo" :x="config.width - padding * 3"></image>
     </svg>
     <el-button @click="toPng()">To PNG</el-button>
   </div>
@@ -35,11 +43,12 @@
 
 <script>
 import svgToPng from '../../services/svg2png'
+
 const fontFamily = 'font-family: \'Avenir\', Helvetica, Arial, sans-serif;'
 
 export default {
   name: 'SpeakerCard',
-  props: ['userInfo', 'config', 'talk', 'image'],
+  props: ['userInfo', 'config', 'talk', 'image', 'meetup', 'meetupLogo'],
   computed: {
     padding () {
       return this.config.height / 30
@@ -61,11 +70,16 @@ export default {
     },
     titleStyle () {
       const fontSize = this.padding * 1.4 * 1.5
-      return fontFamily + `font-weight: 600;font-size: ${fontSize}px;line-height:${fontSize * 1.3}px;margin-bottom: ${this.padding * 0.8}px;`
+      return fontFamily + `font-weight: 600;font-size: ${fontSize * 0.8}px;line-height:${fontSize * 1}px;margin-bottom: ${this.padding * 0.8}px;`
     },
     descriptionStyle () {
       const fontSize = this.padding * 1.2 * 2
-      return fontFamily + 'font-weight: r3600;font-size: ' + fontSize + 'px;line-height: ' + (fontSize * 1.4) + 'px;margin-bottom: 10px;'
+      return fontFamily + 'font-weight: r3600;font-size: ' + (fontSize * 0.6) + 'px;line-height: ' + (fontSize * 0.8) + `px;margin-bottom: 10px;
+      overflow: hidden;
+display: -webkit-box;
+-webkit-line-clamp: 5;
+-webkit-box-orient: vertical;
+`
     },
     metaStyle () {
       const fontSize = this.padding * 1.2
@@ -79,9 +93,6 @@ export default {
     return {
       event: {
         date: ''
-      },
-      meetup: {
-        title: ''
       }
     }
   },

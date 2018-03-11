@@ -1,5 +1,6 @@
 <template>
-  <speaker-card :image="image" :userInfo="user" :talk="this.model" :config="configs.big"></speaker-card>
+  <speaker-card :image="image" :userInfo="user" :talk="this.model" :config="configs.big"
+                :meetup="meetup" :meetupLogo="meetupLogo"></speaker-card>
 </template>
 <script>
 import SpeakerCard from '@/components/helpers/SpeakerCard'
@@ -30,6 +31,13 @@ function getBase64FromImageUrl (url) {
 export default {
   props: ['model', 'schema'],
   computed: {
+    meetup () {
+      return {
+        name: 'AngularNYC',
+        picture: '-L4XCLlHMfE46J0SnziV',
+        date: 'March 20'
+      }
+    },
     user () {
       const userField = this.schema.fields.find(a => a.model === 'speaker')
       const context = userField.context || []
@@ -54,10 +62,18 @@ export default {
         })
       })
     }
+    if (this.meetup.picture) {
+      firebaseService.getAvatar(this.meetup.picture).then((url) => {
+        getBase64FromImageUrl(url).then((base64) => {
+          this.meetupLogo = base64
+        })
+      })
+    }
   },
   data () {
     return {
       image: '',
+      meetupLogo: '',
       configs: {
         big: {
           color: '#e61e25',

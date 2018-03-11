@@ -1,7 +1,8 @@
 <template>
   <div>
-    <generic-entity-list :schema="this.field.entity.schema" :collection="this.field.entity.collection" :filter="filter"
-                         :service="this.field.service"></generic-entity-list>
+    <generic-entity-card-list :component="component" :schema="this.field.entity.schema"
+                              :collection="this.field.entity.collection" :filter="filter"
+                              :service="this.field.service"></generic-entity-card-list>
 
   </div>
 </template>
@@ -9,9 +10,13 @@
 
 export default {
   name: 'FieldDisplayEntity',
+  displayFull: false,
   data () {
     return {
-
+      component: {
+        props: ['model'],
+        template: '<div>{{model.title}}</div>'
+      },
       filter: {
         [this.field.key]: this.model.key
       }

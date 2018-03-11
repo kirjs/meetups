@@ -12,10 +12,11 @@ import FieldMeta from '@/components/entity-framework/fields/FieldMeta'
 import entityRouterConfig from '../components/entity-framework/entityRouterConfig'
 import talksEntity from '../components/entities/talksEntity'
 import usersEntity from '../components/entities/usersEntity'
-import GenericEntityList from '@/components/entity-framework/GenericEntityList'
+import GenericEntityCardList from '@/components/entity-framework/GenericEntityCardList'
 import meetupsEntity from '../components/entities/meetupsEntity'
 import FirebaseEntityService from '../components/entity-framework/firebase-entity-service'
 import eventsEntity from '../components/entities/eventsEntity'
+import slidesEntity from '../components/entities/slidesEntity'
 
 Vue.component('fieldGroup', FieldGroup)
 Vue.component('fieldEntity', FieldEntity)
@@ -26,7 +27,7 @@ Vue.component('FieldLink', FieldLink)
 Vue.component('fieldDate', FieldDate)
 Vue.use(Router)
 
-Vue.component('generic-entity-list', GenericEntityList)
+Vue.component('generic-entity-card-list', GenericEntityCardList)
 
 export default new Router({
   routes: [
@@ -35,7 +36,9 @@ export default new Router({
         usersEntity,
         talksEntity,
         meetupsEntity,
+        slidesEntity,
         eventsEntity
+
       ],
       service: new FirebaseEntityService()
     }),

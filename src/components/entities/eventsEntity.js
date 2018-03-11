@@ -36,7 +36,7 @@ export default {
         displayKey: 'displayName',
         label: 'organizers',
         model: 'organizers'
-      },
+      }
     ]
   }
 }

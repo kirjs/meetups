@@ -1,7 +1,7 @@
 export default function SvgToPng (svgCode, callback) {
   const canvas = document.createElement('canvas')
-  canvas.width = 600
-  canvas.height = 300
+  canvas.width = 800
+  canvas.height = 400
   document.body.appendChild(canvas)
   const context = canvas.getContext('2d')
   const domURL = self.URL || self.webkitURL || self

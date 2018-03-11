@@ -8,6 +8,7 @@ import FieldDisplayInput from '@/components/entity-framework/display/fields/Fiel
 import FieldDisplaySelect from '@/components/entity-framework/display/fields/FieldDisplaySelect'
 import FieldDisplayEntity from '@/components/entity-framework/display/fields/FieldDisplayEntity'
 import FieldDisplayKey from '@/components/entity-framework/display/fields/FieldDisplayKey'
+import FieldDisplaySlides from '@/components/entity-framework/display/fields/FieldDisplaySlides'
 
 export default {
   'field-display-default': FieldDisplayDefault,
@@ -17,6 +18,7 @@ export default {
   'field-display-picture': FieldDisplayPicture,
   'field-display-meta': FieldDisplayMeta,
   'field-display-textArea': FieldDisplayTextarea,
+  'field-display-slides': FieldDisplaySlides,
   'field-display-key': FieldDisplayKey,
   'field-display-entity': FieldDisplayEntity,
   'field-display-select': FieldDisplaySelect,

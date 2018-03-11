@@ -1,6 +1,6 @@
 <template>
   <span>
-    <span v-for="(actualValue, index) in actualValues" :key="actualValue.key">
+    <span v-for="actualValue in actualValues" :key="actualValue.key">
       <span v-if="!field.entity.path">{{actualValue}}</span>
       <router-link :to="field.entity.path + '/' + value" v-if="field.entity.path">{{actualValue}}</router-link>
     </span>

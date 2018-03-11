@@ -21,7 +21,6 @@ export default {
       {
         type: 'input',
         inputType: 'text',
-        label: 'Last name',
         model: 'lastName'
       },
       {

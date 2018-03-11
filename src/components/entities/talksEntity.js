@@ -1,4 +1,5 @@
 import SpeakerCardWrapper from '@/components/helpers/SpeakerCardWrapper'
+
 export default {
   id: 'talks',
   path: '/talks',

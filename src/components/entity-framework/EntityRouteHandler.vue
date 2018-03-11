@@ -1,16 +1,16 @@
 <template>
-    <generic-entity-list :schema="schema" :collection="collection" :filter="filter"
-                         :service="service"></generic-entity-list>
+  <generic-entity-card-list :schema="schema" :collection="collection" :filter="filter"
+                            :service="service"></generic-entity-card-list>
 </template>
 
 <script>
-import GenericEntityList from '@/components/entity-framework/GenericEntityList'
+import GenericEntityCardList from '@/components/entity-framework/GenericEntityCardList'
 
 export default {
   name: 'EntityRouteHandler',
   props: ['schema', 'filter', 'config', 'collection', 'service'],
   components: {
-    'generic-entity-list': GenericEntityList
+    'generic-entity-card-list': GenericEntityCardList
   }
 }
 </script>

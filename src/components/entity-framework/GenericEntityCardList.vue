@@ -1,9 +1,10 @@
 <template>
-  <entity-list @update="update($event)" @add="add()" :schema="schema" :model="model"></entity-list>
+  <entity-card-list @update="update($event)" :component="component" @add="add()" :schema="schema"
+                    :model="model"></entity-card-list>
 </template>
 
 <script>
-import EntityList from '@/components/entity-framework/EntityList'
+import EntityCardList from '@/components/entity-framework/EntityCardList'
 import firebase from '@/services/firebase'
 
 function applyFilter (items, filter) {
@@ -13,7 +14,7 @@ function applyFilter (items, filter) {
 }
 
 export default {
-  name: 'GenericEntityList',
+  name: 'GenericEntityCardList',
   props: {
     collection: {
       required: true,
@@ -26,6 +27,7 @@ export default {
       type: Boolean,
       defaultValue: true
     },
+    component: true,
     filter: true,
     service: true
   },
@@ -34,12 +36,11 @@ export default {
     this.ref.list(value => this.model = applyFilter(value, this.filter))
   },
   data () {
-    this.schema.fields.filter(field => field.type === 'link' || field.type === 'linkBelongsTo' ).forEach(field => {
+    this.schema.fields.filter(field => field.type === 'link' || field.type === 'linkBelongsTo').forEach(field => {
       this.service.ref(field.entity.collection).list((items) => {
         field.context = items
       })
     })
-
 
     return {
       ref: this.service.ref(this.collection),
@@ -47,14 +48,17 @@ export default {
     }
   },
   components: {
-    'entity-list': EntityList
+    'entity-card-list': EntityCardList
   },
   methods: {
     update (value) {
       this.ref.update(value)
     },
     add () {
-      this.ref.new(this.filter)
+      this.ref.new({
+        ...this.filter,
+        todo: ''
+      })
     }
   }
 }

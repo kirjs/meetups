@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-date-picker v-model="value"  type="datetime" placeholder="Select date and time"></el-date-picker>
+    <el-date-picker v-model="value" type="datetime" placeholder="Select date and time"></el-date-picker>
   </div>
 </template>
 

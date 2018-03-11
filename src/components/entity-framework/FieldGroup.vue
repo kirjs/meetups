@@ -1,13 +1,15 @@
 <template>
   <div>
     {{model}}
-    <entity-list @update="$emit('update', $event)" @add="add()" :schema="schema.schema" :model="value"></entity-list>
+    <entity-card-list @update="$emit('update', $event)" @add="add()" :schema="schema.schema"
+                      :model="value"></entity-card-list>
   </div>
 </template>
 
 <script>
-import EntityList from '@/components/entity-framework/EntityList'
+import EntityCardList from '@/components/entity-framework/EntityCardList'
 import { abstractField } from 'vue-form-generator'
+
 export default {
   mixins: [abstractField],
   created () {
@@ -16,7 +18,7 @@ export default {
     }
   },
   components: {
-    'entity-list': EntityList
+    'entity-card-list': EntityCardList
   },
   methods: {
     update () {

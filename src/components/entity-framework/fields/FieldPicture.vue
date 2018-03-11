@@ -67,7 +67,7 @@ export default {
     },
     uploadFile () {
       firebaseService.uploadAvatar(this.model.key, this.image, (lol) => {
-        this.model.avatar = this.model.key
+        this.value = this.model.key
         this.initialImage = this.image
       })
     }

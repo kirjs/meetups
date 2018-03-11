@@ -1,6 +1,6 @@
 import { firebaseAction } from 'vuexfire'
 
-const setMeetupsRef = firebaseAction(({bindFirebaseRef}, { ref }) => {
+const setMeetupsRef = firebaseAction(({bindFirebaseRef}, {ref}) => {
   bindFirebaseRef('meetups', ref)
 })
 

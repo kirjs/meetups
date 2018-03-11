@@ -13,7 +13,7 @@ export default {
       return this.field.displayKey || 'name'
     },
     selectedContext () {
-      debugger;
+      debugger
       return (this.field.context || []).filter(a => a.key === this.value) || {[this.displayKey]: 'No Value'}
     },
     actualValue () {

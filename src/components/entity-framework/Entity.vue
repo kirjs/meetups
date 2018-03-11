@@ -1,8 +1,8 @@
 <template>
   <el-card style="margin-top:10px">
     <div slot="header">
-      <span>{{model.displayName}}</span>
-      <button @click='editMode = !editMode'  style="float: right; "><i class="el-icon-edit"></i></button>
+      <span></span>
+      <button @click='editMode = !editMode' style="float: right; "><i class="el-icon-edit"></i></button>
     </div>
     <div v-if='editMode'>
       <vue-form-generator :schema='schema' :model='model'>

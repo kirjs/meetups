@@ -27,6 +27,11 @@ export default {
         entityId: 'events',
         label: 'events',
         key: 'meetup'
+      },
+      {
+        type: 'picture',
+        label: 'picture',
+        model: 'picture'
       }
     ]
   }
