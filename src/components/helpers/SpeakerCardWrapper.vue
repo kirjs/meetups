@@ -34,8 +34,8 @@ export default {
     meetup () {
       return {
         name: 'AngularNYC',
-        picture: '-L4XCLlHMfE46J0SnziV',
-        date: 'March 20'
+//        picture: '-L4XCLlHMfE46J0SnziV',
+        date: 'May 24'
       }
     },
     user () {
@@ -76,6 +76,7 @@ export default {
       meetupLogo: '',
       configs: {
         big: {
+//          color: '#43b884',
           color: '#e61e25',
           width: 800,
           height: 400

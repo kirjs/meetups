@@ -1,43 +1,46 @@
 <template>
   <div>
-    <svg version="1.1" ref="svg" :width="config.width" :height="config.height" text-rendering="optimizeLegibility"
-         xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" :height="radius * 2" :width="radius * 2">
-          <image :width="radius * 2" y="0" crossorigin="anonymous" :xlink:href="image"></image>
-        </pattern>
-      </defs>
-      <rect x="0" y="0" :width="config.width" :height="config.height" fill="white"></rect>
-      <rect :x="radius" :y="padding" :width="config.width - radius" :height="panelHeight" :fill="config.color"/>
-      <circle :cx="radius" :cy="radius" :r="radius" :fill="config.color"/>
-      <circle :cx="radius" :cy="radius" :r="radius - 5" fill="url(#image)"/>
-      <text style="font-family: 'Avenir', Helvetica, Arial, sans-serif;font-weight: 300;" :x="textStartX"
-            :y="panelHeight + 1" stroke="white" fill="white" :font-size="panelHeight * 0.8">{{userInfo.displayName}}
-      </text>
-      <foreignObject :x="textStartX" :y="textStartY" :width="textWidth" :height="config.height"
-                     style="overflow: hidden">
-        <div
-          :style="titleStyle"
-          xmlns="http://www.w3.org/1999/xhtml" class="title">{{talk.displayName}}
-        </div>
-        <div
-          :style="descriptionStyle"
-          xmlns="http://www.w3.org/1999/xhtml" class="description">{{talk.description}}
-        </div>
-      </foreignObject>
-      <rect :x="radius - panelHeight / 2" :y="radius * 2 + padding" :width="panelHeight" :height="padding / 2.5"
-            :fill="config.color"></rect>
-      <text :y="metaStartY" :style="metaStyle" :x="radius" text-anchor="middle">
-        {{userInfo.twitterHandle || userInfo.url || ''}}
-      </text>
+    <div>
+      <svg version="1.1" ref="svg" :width="config.width" :height="config.height" text-rendering="optimizeLegibility"
+           xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="image" x="0" y="0" patternUnits="userSpaceOnUse" :height="radius * 2" :width="radius * 2">
+            <image :width="radius * 2" y="0" crossorigin="anonymous" :xlink:href="image"></image>
+          </pattern>
+        </defs>
+        <rect x="0" y="0" :width="config.width" :height="config.height" fill="white"></rect>
+        <rect :x="radius" :y="padding" :width="config.width - radius" :height="panelHeight" :fill="config.color"/>
+        <circle :cx="radius" :cy="radius" :r="radius" :fill="config.color"/>
+        <circle :cx="radius" :cy="radius" :r="radius - 5" fill="url(#image)"/>
+        <text style="font-family: 'Avenir', Helvetica, Arial, sans-serif;font-weight: 300;" :x="textStartX"
+              :y="panelHeight + 1" stroke="white" fill="white" :font-size="panelHeight * 0.8">{{userInfo.displayName}}
+        </text>
+        <foreignObject :x="textStartX" :y="textStartY" :width="textWidth" :height="config.height"
+                       style="overflow: hidden">
+          <div
+            :style="titleStyle"
+            xmlns="http://www.w3.org/1999/xhtml" class="title">{{talk.displayName}}
+          </div>
+          <div
+            :style="descriptionStyle"
+            xmlns="http://www.w3.org/1999/xhtml" class="description">{{talk.description}}
+          </div>
+        </foreignObject>
+        <rect :x="radius - panelHeight / 2" :y="radius * 2 + padding" :width="panelHeight" :height="padding / 2.5"
+              :fill="config.color"></rect>
+        <text :y="metaStartY" :style="metaStyle" :x="radius" text-anchor="middle">
+          {{userInfo.twitterHandle || userInfo.url || ''}}
+        </text>
 
-      <text :y="metaStartY" :style="metaStyle" :x="config.width - padding * 3.5" text-anchor="end">
-        {{meetup.date}} @ {{meetup.name}}
-      </text>
-      <image :y="metaStartY - padding" :width="this.padding" crossorigin="anonymous"
-             :xlink:href="meetupLogo" :x="config.width - padding * 3"></image>
-    </svg>
+        <text :y="metaStartY" :style="metaStyle" :x="config.width - padding * 3.5" text-anchor="end">
+          {{meetup.date}} @ {{meetup.name}}
+        </text>
+        <image :y="metaStartY - padding" :width="this.padding" crossorigin="anonymous"
+               :xlink:href="meetupLogo" :x="config.width - padding * 3"></image>
+      </svg>
+    </div>
     <el-button @click="toPng()">To PNG</el-button>
+
   </div>
 </template>
 
@@ -98,7 +101,9 @@ display: -webkit-box;
   },
   methods: {
     toPng () {
-      svgToPng(this.$refs.svg.outerHTML, a => { })
+      svgToPng(this.$refs.svg.parentElement, a => {
+        this.$refs.svg.parentElement.parentElement.appendChild(a)
+      })
     }
   }
 }
